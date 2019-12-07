@@ -1,10 +1,16 @@
 # NaijaHacks Hackathon 2019
 
-## Team SafeHaven
+## Team Safehaven
+
+# Description
+The SafeHaven app is a cross platform application(USSD, Web and Mobile) that enable citizens of the society especially potential victims, victims or third party persons to report cases of crime, rape or any form of abuse to authorized personnels and seek help in the quickest way possible.
 
 ### Team Members
 
-
+- Joseph Burutu - UI/UX Designer and Frontend Developer 
+- Ayooluwa Olosunde - Backend and Mobile Developer 
+- Valentine - Frontend Developer 
+- Moshood Abidemi - Frontend and Backend Developer
 
 
 # Problem
@@ -13,7 +19,8 @@ As people, we want a free, safe and welcoming environment to live, work, learn a
 
 # Proposed Solution
 
-A platform-based application(USSD, web, and mobile) that enables citizens of the society to report crime, rapes or abuses to approved personnel and seek support as soon as possible.
+There's a rapid increase in rape cases, crime and abuse of human rights in the country right now, with no quick way to contact the needed authorities to help in such cases.
+A platform-based application(USSD, web, and mobile) that enables citizens of the society to report crime, rapes or abuses to approved personnel and seek support as quick as possible.
 
 # Proposed Stack
 
@@ -25,6 +32,9 @@ Node, HTML, CSS, vanila js and Postgres
 - Users will be able to add their families and friends cotacts for security alert during distress.
 - The platform will give security insights of locations to users.
 - A well detailed data analysis of security events over time in an environment. This will be useful for security agencies and users at large.
+- USSD application will make it easy for users without data connection to use the app. 
+- Videos footage and images can be sent via the webapp, thus provide ample evidence should there be a law case. 
+
 
 # Top-level directory layout
 
@@ -78,10 +88,13 @@ npm run watch
 
 ```
 yarn run serve
+
 ```
 
 Using npm
 
 ```
 npm run serve
+
+
 ```         
