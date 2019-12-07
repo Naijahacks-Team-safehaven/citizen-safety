@@ -20,7 +20,8 @@ As people, we want a free, safe and welcoming environment to live, work, learn a
 # Proposed Solution
 
 There's a rapid increase in rape cases, crime and abuse of human rights in the country right now, with no quick way to contact the needed authorities to help in such cases.
-A platform-based application(USSD, web, and mobile) that enables citizens of the society to report crime, rapes or abuses to approved personnel and seek support as quick as possible.
+
+SafeHaven provides a platform-based application(USSD, web, and mobile) that enables citizens of the society to report crime, rapes or abuses to approved personnel and seek support as quick as possible.
 
 # Proposed Stack
 
