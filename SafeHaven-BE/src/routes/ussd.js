@@ -1,8 +1,19 @@
 const express = require('express');
+const Nexmo = require('nexmo');
+const dotEnv = require('dotenv');
+
 const router = express.Router();
-const nexmo = require('nexmo');
+dotEnv.config();
+
+const nexmo = new Nexmo({
+    apiKey: `${process.env.NEXMO_API_KEY}`,
+    apiSecret: `${process.env.NEXMO_API_SECRET}`,
+})
 
 const emergencyContacts  = [ '1223858078674', '6742678468', '674286448']
+router.get('/', (req, res, next) => {
+  console.log('working');
+})
 router.post('*', (req, res) => {
   let {sessionId, serviceCode, phoneNumber, text} = req.body
   if (text == '') {
@@ -64,3 +75,5 @@ router.post('*', (req, res) => {
     res.status(400).send('Bad request!')
   }
 })
+
+module.exports = router;
