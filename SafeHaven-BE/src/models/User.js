@@ -17,8 +17,9 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      haven: DataTypes.STRING,
+      Haven: DataTypes.STRING,
       havenLocation: DataTypes.STRING,
+      password: DataTypes.STRING,
     }, {});
     User.associate = (models) => {
       // User.belongsTo(models.Alert, {

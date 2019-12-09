@@ -13,7 +13,9 @@ const nexmo = new Nexmo({
 const emergencyContacts  = [ '1223858078674', '6742678468', '674286448']
 router.get('/', (req, res, next) => {
   console.log('working');
+  res.send('welcome to safehaven let\' create a safe place together');
 })
+
 router.post('*', (req, res) => {
   let {sessionId, serviceCode, phoneNumber, text} = req.body
   if (text == '') {

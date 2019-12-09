@@ -19,6 +19,8 @@
     "morgan": "^1.9.1",
     "nexmo": "^2.6.0-beta-1",
     "bcryptjs": "^2.4.3",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "datauri": "^2.0.0",
