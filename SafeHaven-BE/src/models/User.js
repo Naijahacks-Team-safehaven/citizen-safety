@@ -28,12 +28,11 @@ export default (sequelize, DataTypes) => {
           allowNull: false
         },
       });
-      // User.hasMany(models.eContact, {
-      //   onDelete: 'CASCADE',
-      //   foreignKey: {
-      //     allowNull: false
-      //   }
-      // })
+      User.hasMany(models.eContact, {
+        onDelete: 'CASCADE',
+        foreignKey: 'id',
+        targetKey: 'user_id'
+      })
     };
     return User;
   };
