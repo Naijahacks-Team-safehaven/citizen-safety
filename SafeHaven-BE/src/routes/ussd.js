@@ -39,7 +39,6 @@ router.post('/ussd', (req, res) => {
       },
       include: 'eContacts'
     })).then(eContacts => {
-      console.log(eContacts);
       let response = `CON Choose contacts to send emergency alerts to
       1. ${eContacts[0]}
       2. ${eContacts[1]}

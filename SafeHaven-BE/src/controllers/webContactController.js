@@ -1,3 +1,5 @@
+import { Op, fn, col } from 'sequelize';
+
 const model = require('../models');
 
 const { eContact, User } = model;
@@ -57,15 +59,22 @@ const WebContactController = {
     },
     async getSosContact(req, res) {
         try {
-         const { id } = req.query;
-         const contact = await eContact.findOne({
-             where: {id: id}
-         });
-         if (!contact) return res.status(404).send({status: 'Error', data: 'contact not found'})
+         const { name, id, phone } = req.userData;
+         const Contacts = await User.findAll(({
+           
+           where:{
+               phone: phone
+             },
+             attributes: {
+                exclude: ['password', 'createdAt', 'updatedAt'],
+              },
+              include: ['eContacts'],
+          }))
+         if (!Contacts) return res.status(404).send({status: 'Error', data: 'contact not found'})
          await eContact.destory({
              where: { id },
          });
-         return res.status(200).send({ status: 'Success', data: 'contact successfully deleted'})
+         return res.status(200).send({ status: 'Success', data: Contacts.dataValues})
         } catch (e) {
             console.log(e);
             return res.status(500).send({ status: 'Error', data: 'An error occured'});
