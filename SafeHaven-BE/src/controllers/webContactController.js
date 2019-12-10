@@ -71,9 +71,6 @@ const WebContactController = {
               include: ['eContacts'],
           }))
          if (!Contacts) return res.status(404).send({status: 'Error', data: 'contact not found'})
-         await eContact.destory({
-             where: { id },
-         });
          return res.status(200).send({ status: 'Success', data: Contacts.dataValues})
         } catch (e) {
             console.log(e);
