@@ -22,12 +22,18 @@ export default (sequelize, DataTypes) => {
       password: DataTypes.STRING,
     }, {});
     User.associate = (models) => {
-      // User.belongsTo(models.Alert, {
-      //   onDelete: 'CASCADE',
-      //   foreignKey: {
-      //     allowNull: false
-      //   },
-      // });
+      User.hasMany(models.Personnel, {
+        onDelete: 'CASCADE',
+        foreignKey: {
+          allowNull: false
+        },
+      });
+      User.hasMany(models.eContacts, {
+        onDelete: 'CASCADE',
+        foreignKey: {
+          allowNull: false
+        }
+      })
     };
     return User;
   };

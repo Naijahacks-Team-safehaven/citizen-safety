@@ -20,12 +20,10 @@ export default (sequelize, DataTypes) => {
       location: DataTypes.STRING,
     }, {});
     Personnel.associate = (models) => {
-      // Personnel.belongsTo(models.Alert, {
-      //   onDelete: 'CASCADE',
-      //   foreignKey: {
-      //     allowNull: false
-      //   },
-      // });
+      Personnel.belongsTo(models.User, {
+        onDelete: 'CASCADE',
+        foreignKey: 'id',
+      });
     };
     return Personnel;
   };

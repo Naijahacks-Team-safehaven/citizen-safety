@@ -19,12 +19,10 @@ export default (sequelize, DataTypes) => {
       },
     }, {});
     eContact.associate = (models) => {
-      // Personnel.belongsTo(models.Alert, {
-      //   onDelete: 'CASCADE',
-      //   foreignKey: {
-      //     allowNull: false
-      //   },
-      // });
+      eContact.belongsTo(models.User, {
+        onDelete: 'CASCADE',
+        foreignKey: 'id'
+      });
     };
     return eContact;
   };
