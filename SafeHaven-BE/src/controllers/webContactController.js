@@ -38,7 +38,7 @@ const WebContactController = {
 
         }
     },
-    async deleteSosContact(res, res) {
+    async deleteSosContact(req, res) {
         try {
          const { id } = req.query;
          const contact = await eContact.findOne({
