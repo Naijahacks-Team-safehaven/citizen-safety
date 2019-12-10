@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
   res.send('welcome to safehaven let\' create a safe place together');
 })
 
-router.post('*', (req, res) => {
+router.post('/ussd', (req, res) => {
   let {sessionId, serviceCode, phoneNumber, text} = req.body
   if (text == '') {
     // This is the first request
