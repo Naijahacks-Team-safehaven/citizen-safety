@@ -1,6 +1,6 @@
 const model = require('../models');
 
-const { eContact } = model;
+const { eContact, User } = model;
 
 const WebContactController = {
     async addSosContact (req, res) {
@@ -39,6 +39,23 @@ const WebContactController = {
         }
     },
     async deleteSosContact(req, res) {
+        try {
+         const { id } = req.query;
+         const contact = await eContact.findOne({
+             where: {id: id}
+         });
+         if (!contact) return res.status(404).send({status: 'Error', data: 'contact not found'})
+         await eContact.destory({
+             where: { id },
+         });
+         return res.status(200).send({ status: 'Success', data: 'contact successfully deleted'})
+        } catch (e) {
+            console.log(e);
+            return res.status(500).send({ status: 'Error', data: 'An error occured'});
+
+        }
+    },
+    async getSosContact(req, res) {
         try {
          const { id } = req.query;
          const contact = await eContact.findOne({

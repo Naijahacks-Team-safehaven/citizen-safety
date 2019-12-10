@@ -9,6 +9,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      user_id:  DataTypes.UUID,
       phone: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -21,7 +22,7 @@ export default (sequelize, DataTypes) => {
     eContact.associate = (models) => {
       eContact.belongsTo(models.User, {
         onDelete: 'CASCADE',
-        foreignKey: 'id'
+        foreignKey: 'user_id'
       });
     };
     return eContact;
