@@ -71,7 +71,7 @@ const WebContactController = {
               include: ['eContacts'],
           }))
          if (!Contacts) return res.status(404).send({status: 'Error', data: 'contact not found'})
-         return res.status(200).send({ status: 'Success', data: Contacts.dataValues})
+         return res.status(200).send({ status: 'Success', data: Contacts})
         } catch (e) {
             console.log(e);
             return res.status(500).send({ status: 'Error', data: 'An error occured'});
