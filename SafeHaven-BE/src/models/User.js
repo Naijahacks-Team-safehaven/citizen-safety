@@ -28,7 +28,7 @@ export default (sequelize, DataTypes) => {
           allowNull: false
         },
       });
-      User.hasMany(models.eContacts, {
+      User.hasMany(models.eContact, {
         onDelete: 'CASCADE',
         foreignKey: {
           allowNull: false

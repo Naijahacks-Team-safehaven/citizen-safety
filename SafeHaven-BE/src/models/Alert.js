@@ -19,7 +19,7 @@ export default (sequelize, DataTypes) => {
       proof: DataTypes.STRING,
     }, {});
     Alert.associate = (models) => {
-      Alert.belongsTo(models.Personnels, {
+      Alert.belongsTo(models.Personnel, {
         onDelete: 'CASCADE',
         foreignKey: {
           allowNull: false
