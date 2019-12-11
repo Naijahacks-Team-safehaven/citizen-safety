@@ -22,6 +22,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/ussd', async (req, res) => {
+  console.log(req.body);
   let {sessionId, serviceCode, phoneNumber, text} = req.body
   if (text == '') {
     // This is the first request
