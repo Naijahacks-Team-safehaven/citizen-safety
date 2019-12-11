@@ -1,9 +1,10 @@
 const Nexmo = require('nexmo');
 const dotEnv = require('dotenv');
 const models = require('../models');
-const User = models.User
-const eContact = models.eContact
-const Personnel = models.Personnel
+const User = models.User;
+const eContact = models.eContact;
+const Personnel = models.Personnel;
+const Alert = models.Alert;
 const number = '12014167198'
 
 dotEnv.config();
@@ -67,7 +68,177 @@ const Helper = {
         return res.send(response);
     }
 },
-
+async sendPoliceAlert(res, phoneNumber, text) {
+    try {
+        let response;
+        //Emergency contacts should be fetched from database
+   const user = await User.findOne({
+    where: {
+      phone: phoneNumber,
+    },
+  })
+    if (!user) {
+        await Alert.create({
+            name : 'Anonymous',
+            details: text,
+            address : 'check details',
+            location: location || '',
+            proof: '',
+            phone :phoneNumber,
+        })
+       await nexmo.message.sendSms(
+            'SafeHaven', `+2348165656988` , `${text}`,
+            (err, responseData) => {
+              if (err) {
+                console.log(err);
+              } else {
+                console.dir(responseData);
+              }
+            }
+         );  
+      response = `END Your SOS has been sent to nearest police station. Please Signup to be able send to your emergency contacts`;
+      return res.send(response);
+    }
+    await Alert.create({
+        name : user.name,
+        details: text,
+        address : 'check details',
+        location: location || '',
+        proof: '',
+        phone :phoneNumber,
+    }) 
+   await nexmo.message.sendSms(
+            'SafeHaven', `+2348165656988` , `${text}`,
+            (err, responseData) => {
+              if (err) {
+                console.log(err);
+              } else {
+                console.dir(responseData);
+              }
+            }
+         );  
+      response = `END Your SOS has been sent to nearest police station.`;
+      return res.send(response);
+    } catch (e) {
+        console.log(e.message);
+        response = `END An error occured please try again`;
+        return res.send(response);
+    }
+},
+async sendHospitalAlert(res, phoneNumber, text) {
+    try {
+        let response;
+        //Emergency contacts should be fetched from database
+   const user = await User.findOne({
+    where: {
+      phone: phoneNumber,
+    },
+  })
+    if (!user) {
+        await Alert.create({
+            name : 'Anonymous',
+            details: text,
+            address : 'check details',
+            location: location || '',
+            proof: '',
+            phone :phoneNumber,
+        })
+       await nexmo.message.sendSms(
+            'SafeHaven', `+2348165656988` , `${text}`,
+            (err, responseData) => {
+              if (err) {
+                console.log(err);
+              } else {
+                console.dir(responseData);
+              }
+            }
+         );  
+      response = `END Your SOS has been sent to nearest police station.`;
+      return res.send(response);
+    }
+    await Alert.create({
+        name : user.name,
+        details: text,
+        address : 'check details',
+        location: location || '',
+        proof: '',
+        phone :phoneNumber,
+    }) 
+   await nexmo.message.sendSms(
+            'SafeHaven', `+2348165656988` , `${text}`,
+            (err, responseData) => {
+              if (err) {
+                console.log(err);
+              } else {
+                console.dir(responseData);
+              }
+            }
+         );  
+      response = `END Your SOS has been sent to nearest hospital. Please Signup to be able send to your emergency contacts`;
+      return res.send(response);
+    } catch (e) {
+        console.log(e.message);
+        response = `END An error occured please try again`;
+        return res.send(response);
+    }
+},
+async sendLawyerAlert(res, phoneNumber, text) {
+    try {
+        let response;
+        //Emergency contacts should be fetched from database
+   const user = await User.findOne({
+    where: {
+      phone: phoneNumber,
+    },
+  })
+    if (!user) {
+        await Alert.create({
+            name : 'Anonymous',
+            details: text,
+            address : 'check details',
+            location: location || '',
+            proof: '',
+            phone :phoneNumber,
+        })
+       await nexmo.message.sendSms(
+            'SafeHaven', `+2348165656988` , `${text}`,
+            (err, responseData) => {
+              if (err) {
+                console.log(err);
+              } else {
+                console.dir(responseData);
+              }
+            }
+         );  
+      response = `END Your SOS has been sent to nearest police station.`;
+      return res.send(response);
+    }
+    await Alert.create({
+        name : user.name,
+        details: text,
+        address : 'check details',
+        location: location || '',
+        proof: '',
+        phone :phoneNumber,
+    }) 
+   await nexmo.message.sendSms(
+            'SafeHaven', `+2348165656988` , `${text}`,
+            (err, responseData) => {
+              if (err) {
+                console.log(err);
+              } else {
+                console.dir(responseData);
+              }
+            }
+         );  
+      response = `END Your SOS has been sent to nearest hospital. Please Signup to be able send to your emergency contacts`;
+      return res.send(response);
+    } catch (e) {
+        console.log(e.message);
+        response = `END An error occured please try again`;
+        return res.send(response);
+    }
+},
 }
 
 export default Helper;

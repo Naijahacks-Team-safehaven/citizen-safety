@@ -34,52 +34,12 @@ router.post('/ussd', async (req, res) => {
     res.send(response)
   } else if (text == '0') {
      await Helper.sendSOS(res, phoneNumber);
-  } else if (text == '1*2') {
-    // This is a second level response where the user selected 1 in the first instance
-    router.post('*', (req, res) => {
-      Personnel.findOne({
-        where: {
-          category: 'Police'
-        },
-        include: 'phone'
-      }).then(phone => {
-        nexmo.message.sendSms(
-        number, phone , 'A robbery in progress',
-        (err, responseData) => {
-          if (err) {
-            console.log(err);
-          } else {
-            console.dir(responseData);
-          }
-        }
-     );
-      })  
-    let response = `END Alert Successfully sent`
+  } else if (text == '1') {
+    let response = `CON Enter brief description of the situation`
      res.send(response)
-  })
-  } else if (text == '1*3') {
+  } else if (text == '1*') {
     // This is a second level response where the user selected 1 in the first instance
-    router.post('*', (req, res) => {
-      Personnel.findOne({
-        where: {
-          category: 'Lawyer'
-        },
-        include: 'phone'
-      }).then(phone => {
-        nexmo.message.sendSms(
-        number, phone , 'i need a lawyer',
-        (err, responseData) => {
-          if (err) {
-            console.log(err);
-          } else {
-            console.dir(responseData);
-          }
-        }
-     );
-      })  
-    let response = `END Alert Successfully sent`
-     res.send(response)
-  })
+    await Helper.sendPoliceAlert(res, phoneNumber, text);
   } else if (text == '1*4') {
     // This is a second level response where the user selected 1 in the first instance
     router.post('*', (req, res) => {
