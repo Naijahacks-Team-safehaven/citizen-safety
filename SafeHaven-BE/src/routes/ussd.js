@@ -1,6 +1,10 @@
 const express = require('express');
 const Nexmo = require('nexmo');
 const dotEnv = require('dotenv');
+const models = require('../models');
+const User = models.User
+const eContact = models.eContact
+const Personnel = models.Personnel
 
 const router = express.Router();
 dotEnv.config();
@@ -10,7 +14,6 @@ const nexmo = new Nexmo({
     apiSecret: `${process.env.NEXMO_API_SECRET}`,
 })
 
-const emergencyContacts  = [ '1223858078674', '6742678468', '674286448']
 router.get('/', (req, res, next) => {
   console.log('working');
 })
@@ -19,27 +22,34 @@ router.post('*', (req, res) => {
   if (text == '') {
     // This is the first request
     let response = `CON Welcome to safehaven, Select an option below
-    1. Send alert to emergency contacts
-    2. Change emergency contacts`
+    1. Send alert to emergency contacts now
+    2. Alert the Police
+    3. Alert a lawyer
+    4. Alert a doctor`
+    
     res.send(response)
   } else if (text == '1') {
     //Emergency contacts should be fetched from database
-    let response = `CON Choose contacts to send emergency alert
-    1. ${emergencyContacts[0]}
-    2. ${emergencyContacts[1]}
-    3. ${emergencyContacts[2]}
-    4. Send to all contacts`
-    res.send(response)
-  } else if (text == '2') {
-    // Business logic for first level response
-    let response = `CON Input emergency contact numbers`
-    res.send(response)
-  } else if (text == '1*1') {
+    User.findAll(({
+      where: {
+        phone: phoneNumber,
+      },
+      include: 'eContacts'
+    })).then(eContacts => {
+      let response = `CON Choose contacts to send emergency alerts to
+      1. ${eContacts[0]}
+      2. ${eContacts[1]}
+      3. ${eContacts[2]}
+      4. Send to all contacts`
+      res.send(response)
+    })
+    
+  }  else if (text == '1*1') {
     // When user selects 1 and 1
     router.post('*', (req, res) => {
       nexmo.message.sendSms(
         //the number should be fetched from the database, this is just a dummy number
-      '1234','2349095605545', '',
+      '1234',eContact[0], `SOS Alert`,
       (err, responseData) => {
         if (err) {
           console.log(err);
@@ -55,22 +65,72 @@ router.post('*', (req, res) => {
   } else if (text == '1*2') {
     // This is a second level response where the user selected 1 in the first instance
     router.post('*', (req, res) => {
-      nexmo.message.sendSms(
-        //the number should be fetched from the database, this is just a dummy number
-      '1234','2349095605545', 'SOS alert',
-      (err, responseData) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.dir(responseData);
+      Personnel.findOne({
+        where: {
+          category: 'Police'
+        },
+        include: 'phone'
+      }).then(phone => {
+        nexmo.message.sendSms(
+        '1234', phone , 'A robbery in progress',
+        (err, responseData) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.dir(responseData);
+          }
         }
-      }
-   );
+     );
+      })  
     let response = `END Alert Successfully sent`
      res.send(response)
   })
+  } else if (text == '1*3') {
+    // This is a second level response where the user selected 1 in the first instance
+    router.post('*', (req, res) => {
+      Personnel.findOne({
+        where: {
+          category: 'Lawyer'
+        },
+        include: 'phone'
+      }).then(phone => {
+        nexmo.message.sendSms(
+        '1234', phone , 'i need a lawyer',
+        (err, responseData) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.dir(responseData);
+          }
+        }
+     );
+      })  
     let response = `END Alert Successfully sent`
-    res.send(response)
+     res.send(response)
+  })
+  } else if (text == '1*4') {
+    // This is a second level response where the user selected 1 in the first instance
+    router.post('*', (req, res) => {
+      Personnel.findOne({
+        where: {
+          category: 'Doctor'
+        },
+        include: 'phone'
+      }).then(phone => {
+        nexmo.message.sendSms(
+        '1234', phone , 'An ambulance is needed urgently',
+        (err, responseData) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.dir(responseData);
+          }
+        }
+     );
+      })  
+    let response = `END Alert Successfully sent`
+     res.send(response)
+  })
   } else {
     res.status(400).send('Bad request!')
   }
