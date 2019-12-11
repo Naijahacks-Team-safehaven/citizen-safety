@@ -39,7 +39,7 @@ router.post('/ussd', async (req, res) => {
     console.log('details', sessionId, serviceCode);
     let response = `CON Enter brief description of the situation`
      res.send(response)
-  } else if (text == '1*') {
+  } else if (text == '*') {
     // This is a second level response where the user selected 1 in the first instance
     await Helper.sendPoliceAlert(res, phoneNumber, text);
   } else if (text == '1*4') {
