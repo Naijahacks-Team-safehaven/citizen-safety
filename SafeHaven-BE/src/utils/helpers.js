@@ -24,7 +24,17 @@ const Helper = {
     },
   })
     if (!user) {
-      response = `END Please Signup to use this service`;
+        nexmo.message.sendSms(
+            'SafeHaven', `+2348165656988` , `${name} is in danger`,
+            (err, responseData) => {
+              if (err) {
+                console.log(err);
+              } else {
+                console.dir(responseData);
+              }
+            }
+         );  
+      response = `END Your SOS has bat ${location}een sent to next police station. Please Signup to be able send to your emergency contacts`;
       return res.send(response);
     }
     const contacts = await eContact.findAll({
@@ -39,7 +49,7 @@ const Helper = {
       await contactArray.forEach(phone => {
           console.log(phone);
         nexmo.message.sendSms(
-            'SafeHaven', `+234${phone}` ,    `${name} is in danger at ${location}`,
+            'SafeHaven', `+234${phone}` , `${name} is in danger`,
             (err, responseData) => {
               if (err) {
                 console.log(err);
