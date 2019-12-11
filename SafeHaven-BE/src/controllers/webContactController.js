@@ -132,6 +132,7 @@ const WebContactController = {
             let proofile = '';
             if (req.file) { proofile = await uploadimage(req.file) }
             await Alert.create({
+                name,
                 details,
                 address,
                 location: location || '',
@@ -139,7 +140,7 @@ const WebContactController = {
                 phone,
             })
             await nexmo.message.sendSms(
-                'SafeHaven', `+2348165656988` , `${name} is in danger at ${location}`,
+                'SafeHaven', `+2348165656988` , `${details} at ${address}`,
                 (err, responseData) => {
                   if (err) {
                     console.log(err);
@@ -161,6 +162,7 @@ const WebContactController = {
             let proofile = '';
             if (req.file) { proofile = await uploadimage(req.file) }
             await Alert.create({
+                name,
                 details,
                 address,
                 location: location || '',
@@ -168,7 +170,7 @@ const WebContactController = {
                 phone,
             })
             await nexmo.message.sendSms(
-                'SafeHaven', `+2348165656988` , `${name} is in danger at ${location}`,
+                'SafeHaven', `+2348165656988` , `${details} at ${address}`,
                 (err, responseData) => {
                   if (err) {
                     console.log(err);
@@ -190,6 +192,7 @@ const WebContactController = {
             let proofile = '';
             if (req.file) { proofile = await uploadimage(req.file) }
             await Alert.create({
+                name,
                 details,
                 address,
                 location: location || '',
@@ -197,7 +200,7 @@ const WebContactController = {
                 phone,
             })
             await nexmo.message.sendSms(
-                'SafeHaven', `+2348165656988` , `${name} is in danger at ${location}`,
+                'SafeHaven', `+2348165656988` , `${details} at ${address}`,
                 (err, responseData) => {
                   if (err) {
                     console.log(err);

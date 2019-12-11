@@ -19,12 +19,12 @@ export default (sequelize, DataTypes) => {
       proof: DataTypes.STRING,
     }, {});
     Alert.associate = (models) => {
-      Alert.belongsTo(models.Personnel, {
-        onDelete: 'CASCADE',
-        foreignKey: {
-          allowNull: false
-        },
-      });
+      // Alert.belongsTo(models.Personnel, {
+      //   onDelete: 'CASCADE',
+      //   foreignKey: {
+      //     allowNull: false
+      //   },
+      // });
     };
     return Alert;
   };
