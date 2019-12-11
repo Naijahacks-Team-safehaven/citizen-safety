@@ -34,7 +34,7 @@ const Helper = {
               }
             }
          );  
-      response = `END Your SOS has bat ${location}een sent to next police station. Please Signup to be able send to your emergency contacts`;
+      response = `END Your SOS has been sent to next police station. Please Signup to be able send to your emergency contacts`;
       return res.send(response);
     }
     const contacts = await eContact.findAll({
