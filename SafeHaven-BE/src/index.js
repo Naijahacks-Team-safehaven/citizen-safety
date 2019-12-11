@@ -1,3 +1,4 @@
+import multer from 'multer';
 const express = require('express');
 const createError = require('http-errors');
 const bodyParser = require('body-parser');
@@ -5,9 +6,12 @@ const logger = require('morgan');
 const ussdRouter = require('./routes/ussd');
 const webRouter = require('./routes/webuser');
 
+
+const upload = multer();
 const app = express()
 
 app.use(logger('dev'))
+app.use(upload.single('proof'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use('/api/v1/', ussdRouter);

@@ -3,6 +3,7 @@ import { Op, fn, col } from 'sequelize';
 const Nexmo = require('nexmo');
 const dotEnv = require('dotenv');
 const model = require('../models');
+import uploadimage from '../utils/imageUploader';
 
 const number = '12014167198'
 dotEnv.config();
@@ -13,7 +14,7 @@ const nexmo = new Nexmo({
 })
 
 
-const { eContact, User } = model;
+const { eContact, User, Alert } = model;
 
 const WebContactController = {
     async addSosContact (req, res) {
@@ -119,6 +120,34 @@ const WebContactController = {
              );
           });
           return res.status(200).send({ status: 'Success', data: 'Sos sent successfully'});
+        } catch (e) {
+            console.log(e.message);
+            return res.status(500).send({ status: 'Error', data: 'An error occured'});
+        }
+    },
+    async reportAlert(req, res) {
+        try {
+            const { name, phone } = req.userData;
+            const { details, address, location } = req.body;
+            let proofile = '';
+            if (req.file) { proofile = await uploadimage(req.file) }
+            await Alert.create({
+                details,
+                address,
+                location: location || '',
+                proof: proofile
+            })
+            await nexmo.message.sendSms(
+                'SafeHaven', `+2348165656988` , `${name} is in danger at ${location}`,
+                (err, responseData) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    console.dir(responseData);
+                  }
+                }
+             );
+            return res.status(200).send({ status: 'Success', data: 'Alert has been sent to the closest police station around.Thank you for reporting'}); 
         } catch (e) {
             console.log(e.message);
             return res.status(500).send({ status: 'Error', data: 'An error occured'});
