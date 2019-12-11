@@ -104,6 +104,7 @@ const WebContactController = {
                },
          });
           const contactArray = contacts.map(x => x.phone);
+          console.log(contactArray);
           await contactArray.forEach(phone => {
               console.log(phone);
             nexmo.message.sendSms(
