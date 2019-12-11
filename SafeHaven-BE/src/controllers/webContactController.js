@@ -135,7 +135,8 @@ const WebContactController = {
                 details,
                 address,
                 location: location || '',
-                proof: proofile
+                proof: proofile,
+                phone,
             })
             await nexmo.message.sendSms(
                 'SafeHaven', `+2348165656988` , `${name} is in danger at ${location}`,
