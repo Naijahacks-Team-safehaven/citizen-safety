@@ -200,7 +200,7 @@ const WebContactController = {
                 phone,
             })
             await nexmo.message.sendSms(
-                'SafeHaven', `+2348165656988` , `${details} at ${address}`,
+                'SafeHaven', `+2349095605545` , `${details} at ${address}`,
                 (err, responseData) => {
                   if (err) {
                     console.log(err);
@@ -215,6 +215,21 @@ const WebContactController = {
             return res.status(500).send({ status: 'Error', data: 'An error occured'});
         }
     },
+    async getReportHistory (req, res) {
+        try {
+            const { id, phone } = req.userData;
+            const history = await Alert.findAll({
+                where: { phone },
+                attributes : { 
+                 exclude: ['createdAt', 'updatedAt'],
+                }
+            });
+         return res.status(200).send({ status: 'Success', data: history });
+        } catch (e) {
+            console.log(e.message);
+            return res.status(500).send({ status: 'Error', data: 'An error occured'});
+        }
+    }
 }
 
 export default WebContactController;

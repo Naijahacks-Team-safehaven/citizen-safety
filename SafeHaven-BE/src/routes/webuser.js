@@ -15,5 +15,6 @@ webRouter.post('/web/send-sos', auth, WebContactController.sendSOSAlert);
 webRouter.post('/web/report-police', auth, WebContactController.reportAlert);
 webRouter.post('/web/report-hospital', auth, WebContactController.reportAlertHospital);
 webRouter.post('/web/report-lawyer', auth, WebContactController.reportAlertLawyer);
+webRouter.get('/web/get-alert-history', auth, WebContactController.getReportHistory);
 
 module.exports = webRouter;
