@@ -104,13 +104,11 @@ const WebContactController = {
                  exclude: ['createdAt', 'updatedAt'],
                },
          });
-         console.log('contacts', contacts);
           const contactArray = contacts.map(x => x.phone);
-          console.log(contactArray);
           await contactArray.forEach(phone => {
               console.log(phone);
             nexmo.message.sendSms(
-                number, phone ,    `${name} is in danger at ${location}`,
+                'SafeHaven', `+234${phone}` ,    `${name} is in danger at ${location}`,
                 (err, responseData) => {
                   if (err) {
                     console.log(err);
