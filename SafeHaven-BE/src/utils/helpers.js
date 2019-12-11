@@ -25,7 +25,7 @@ const Helper = {
   })
     if (!user) {
         nexmo.message.sendSms(
-            'SafeHaven', `+2348165656988` , `${name} is in danger`,
+            'SafeHaven', `+2348165656988` , `${phoneNumber} is in danger`,
             (err, responseData) => {
               if (err) {
                 console.log(err);
