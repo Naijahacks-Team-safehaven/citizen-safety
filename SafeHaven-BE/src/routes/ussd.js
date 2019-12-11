@@ -5,6 +5,7 @@ const models = require('../models');
 const User = models.User
 const eContact = models.eContact
 const Personnel = models.Personnel
+const number = '12014167198'
 
 const router = express.Router();
 dotEnv.config();
@@ -49,7 +50,7 @@ router.post('*', (req, res) => {
     router.post('*', (req, res) => {
       nexmo.message.sendSms(
         //the number should be fetched from the database, this is just a dummy number
-      '1234',eContact[0], `SOS Alert`,
+      number ,eContact[0], `SOS Alert`,
       (err, responseData) => {
         if (err) {
           console.log(err);
@@ -72,7 +73,7 @@ router.post('*', (req, res) => {
         include: 'phone'
       }).then(phone => {
         nexmo.message.sendSms(
-        '1234', phone , 'A robbery in progress',
+        number, phone , 'A robbery in progress',
         (err, responseData) => {
           if (err) {
             console.log(err);
@@ -95,7 +96,7 @@ router.post('*', (req, res) => {
         include: 'phone'
       }).then(phone => {
         nexmo.message.sendSms(
-        '1234', phone , 'i need a lawyer',
+        number, phone , 'i need a lawyer',
         (err, responseData) => {
           if (err) {
             console.log(err);
@@ -118,7 +119,7 @@ router.post('*', (req, res) => {
         include: 'phone'
       }).then(phone => {
         nexmo.message.sendSms(
-        '1234', phone , 'An ambulance is needed urgently',
+        number, phone , 'An ambulance is needed urgently',
         (err, responseData) => {
           if (err) {
             console.log(err);
