@@ -103,6 +103,7 @@ const WebContactController = {
                  exclude: ['createdAt', 'updatedAt'],
                },
          });
+         console.log('contacts', contacts);
           const contactArray = contacts.map(x => x.phone);
           console.log(contactArray);
           await contactArray.forEach(phone => {
