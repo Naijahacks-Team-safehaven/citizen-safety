@@ -153,7 +153,65 @@ const WebContactController = {
             console.log(e.message);
             return res.status(500).send({ status: 'Error', data: 'An error occured'});
         }
-    }
+    },
+    async reportAlertLawyer(req, res) {
+        try {
+            const { name, phone } = req.userData;
+            const { details, address, location } = req.body;
+            let proofile = '';
+            if (req.file) { proofile = await uploadimage(req.file) }
+            await Alert.create({
+                details,
+                address,
+                location: location || '',
+                proof: proofile,
+                phone,
+            })
+            await nexmo.message.sendSms(
+                'SafeHaven', `+2348165656988` , `${name} is in danger at ${location}`,
+                (err, responseData) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    console.dir(responseData);
+                  }
+                }
+             );
+            return res.status(200).send({ status: 'Success', data: 'Alert has been sent. Thank you for reporting'}); 
+        } catch (e) {
+            console.log(e.message);
+            return res.status(500).send({ status: 'Error', data: 'An error occured'});
+        }
+    },
+    async reportAlertHospital(req, res) {
+        try {
+            const { name, phone } = req.userData;
+            const { details, address, location } = req.body;
+            let proofile = '';
+            if (req.file) { proofile = await uploadimage(req.file) }
+            await Alert.create({
+                details,
+                address,
+                location: location || '',
+                proof: proofile,
+                phone,
+            })
+            await nexmo.message.sendSms(
+                'SafeHaven', `+2348165656988` , `${name} is in danger at ${location}`,
+                (err, responseData) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    console.dir(responseData);
+                  }
+                }
+             );
+            return res.status(200).send({ status: 'Success', data: 'Alert has been sent to the nearest hospital.Thank you for reporting'}); 
+        } catch (e) {
+            console.log(e.message);
+            return res.status(500).send({ status: 'Error', data: 'An error occured'});
+        }
+    },
 }
 
 export default WebContactController;

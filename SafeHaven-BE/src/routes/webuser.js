@@ -12,5 +12,8 @@ webRouter.delete('web/delete-sos-contact', auth, WebContactController.addSosCont
 webRouter.put('/web/update-sos-contact', auth, WebContactController.editSosContact);
 webRouter.get('/web/contacts', auth, WebContactController.getSosContact);
 webRouter.post('/web/send-sos', auth, WebContactController.sendSOSAlert);
+webRouter.post('/web/report-police', auth, WebContactController.reportAlert);
+webRouter.post('/web/report-hospital', auth, WebContactController.reportAlertHospital);
+webRouter.post('/web/report-lawyer', auth, WebContactController.reportAlertLawyer);
 
 module.exports = webRouter;
