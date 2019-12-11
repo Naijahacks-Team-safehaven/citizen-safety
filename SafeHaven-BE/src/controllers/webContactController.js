@@ -19,6 +19,7 @@ const WebContactController = {
     async addSosContact (req, res) {
         try {
             const { id } = req.userData;
+            console.log(id);
             const { name, email, phone } = req.body;
             await eContact.create({
                 user_id: id,
