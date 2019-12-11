@@ -1,14 +1,27 @@
 import { Op, fn, col } from 'sequelize';
 
+const Nexmo = require('nexmo');
+const dotEnv = require('dotenv');
 const model = require('../models');
+
+const number = '12014167198'
+dotEnv.config();
+
+const nexmo = new Nexmo({
+    apiKey: `${process.env.NEXMO_API_KEY}`,
+    apiSecret: `${process.env.NEXMO_API_SECRET}`,
+})
+
 
 const { eContact, User } = model;
 
 const WebContactController = {
     async addSosContact (req, res) {
         try {
+            const { id } = req.userData;
             const { name, email, phone } = req.body;
             await eContact.create({
+                user_id: id,
                 name,
                 email,
                 phone,
@@ -76,6 +89,38 @@ const WebContactController = {
             console.log(e);
             return res.status(500).send({ status: 'Error', data: 'An error occured'});
 
+        }
+    },
+    async sendSOSAlert (req, res) {
+        try {
+         const { id, name } = req.userData;
+         const { location } = req.body;
+         const contacts = await eContact.findAll({
+            where:{
+                user_id: id,
+              },
+              attributes: {
+                 exclude: ['createdAt', 'updatedAt'],
+               },
+         });
+          const contactArray = contacts.map(x => x.phone);
+          await contactArray.forEach(phone => {
+              console.log(phone);
+            nexmo.message.sendSms(
+                number, phone ,    `${name} is in danger at ${location}`,
+                (err, responseData) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    console.dir(responseData);
+                  }
+                }
+             );
+          });
+          return res.status(200).send({ status: 'Success', data: 'Sos sent successfully'});
+        } catch (e) {
+            console.log(e.message);
+            return res.status(500).send({ status: 'Error', data: 'An error occured'});
         }
     }
 }
