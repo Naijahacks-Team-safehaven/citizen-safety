@@ -82,7 +82,7 @@ async sendPoliceAlert(res, phoneNumber, text) {
             name : 'Anonymous',
             details: text,
             address : 'check details',
-            location: location || '',
+            location: '',
             proof: '',
             phone :phoneNumber,
         })
@@ -103,7 +103,7 @@ async sendPoliceAlert(res, phoneNumber, text) {
         name : user.name,
         details: text,
         address : 'check details',
-        location: location || '',
+        location: '',
         proof: '',
         phone :phoneNumber,
     }) 
@@ -139,7 +139,7 @@ async sendHospitalAlert(res, phoneNumber, text) {
             name : 'Anonymous',
             details: text,
             address : 'check details',
-            location: location || '',
+            location: '',
             proof: '',
             phone :phoneNumber,
         })
@@ -160,7 +160,7 @@ async sendHospitalAlert(res, phoneNumber, text) {
         name : user.name,
         details: text,
         address : 'check details',
-        location: location || '',
+        location: '',
         proof: '',
         phone :phoneNumber,
     }) 
@@ -196,7 +196,7 @@ async sendLawyerAlert(res, phoneNumber, text) {
             name : 'Anonymous',
             details: text,
             address : 'check details',
-            location: location || '',
+            location: '',
             proof: '',
             phone :phoneNumber,
         })
@@ -217,7 +217,7 @@ async sendLawyerAlert(res, phoneNumber, text) {
         name : user.name,
         details: text,
         address : 'check details',
-        location: location || '',
+        location: '',
         proof: '',
         phone :phoneNumber,
     }) 
