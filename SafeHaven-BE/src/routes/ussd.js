@@ -35,6 +35,7 @@ router.post('/ussd', async (req, res) => {
   } else if (text == '0') {
      await Helper.sendSOS(res, phoneNumber);
   } else if (text == '1') {
+    console.log('details', sessionId, serviceCode);
     let response = `CON Enter brief description of the situation`
      res.send(response)
   } else if (text == '1*') {
