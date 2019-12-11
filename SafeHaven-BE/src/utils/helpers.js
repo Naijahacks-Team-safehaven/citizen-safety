@@ -1,5 +1,6 @@
 const Nexmo = require('nexmo');
 const dotEnv = require('dotenv');
+const models = require('../models');
 const User = models.User
 const eContact = models.eContact
 const Personnel = models.Personnel
