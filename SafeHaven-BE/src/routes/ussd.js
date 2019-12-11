@@ -26,13 +26,13 @@ router.post('/ussd', async (req, res) => {
   if (text == '') {
     // This is the first request
     let response = `CON Welcome to safehaven, Select an option below
-    1. Send alert to emergency contacts now
-    2. Alert the Police
-    3. Alert a lawyer
-    4. Alert a doctor`
+    1. Alert the Police
+    2. Alert a lawyer
+    3. Alert a doctor
+    0. Emergency`
     
     res.send(response)
-  } else if (text == '1') {
+  } else if (text == '0') {
      await Helper.sendSOS(res, phoneNumber);
   } else if (text == '1*2') {
     // This is a second level response where the user selected 1 in the first instance
