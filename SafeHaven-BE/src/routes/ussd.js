@@ -6,6 +6,7 @@ const User = models.User
 const eContact = models.eContact
 const Personnel = models.Personnel
 const number = '12014167198'
+import Helper from '../utils/helpers';
 
 const router = express.Router();
 dotEnv.config();
@@ -20,7 +21,7 @@ router.get('/', (req, res, next) => {
   res.send('welcome to safehaven let\' create a safe place together');
 })
 
-router.post('/ussd', (req, res) => {
+router.post('/ussd', async (req, res) => {
   let {sessionId, serviceCode, phoneNumber, text} = req.body
   if (text == '') {
     // This is the first request
@@ -32,39 +33,7 @@ router.post('/ussd', (req, res) => {
     
     res.send(response)
   } else if (text == '1') {
-    //Emergency contacts should be fetched from database
-    User.findAll(({
-      where: {
-        phone: phoneNumber,
-      },
-      include: 'eContacts'
-    })).then(eContacts => {
-      let response = `CON Choose contacts to send emergency alerts to
-      1. ${eContacts[0]}
-      2. ${eContacts[1]}
-      3. ${eContacts[2]}
-      4. Send to all contacts`
-      res.send(response)
-    })
-    
-  }  else if (text == '1*1') {
-    // When user selects 1 and 1
-    router.post('*', (req, res) => {
-      nexmo.message.sendSms(
-        //the number should be fetched from the database, this is just a dummy number
-      number ,eContact[0], `SOS Alert`,
-      (err, responseData) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.dir(responseData);
-        }
-      }
-   );
-    let response = `END Alert Successfully sent`
-     res.send(response)
-  })
-   
+     await Helper.sendSOS(res, phoneNumber);
   } else if (text == '1*2') {
     // This is a second level response where the user selected 1 in the first instance
     router.post('*', (req, res) => {
