@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+div.header {
+    background-color:rgb(255, 255, 255);
+    color: blue;
+    margin-bottom: 50px;
+    display: flex;
+}
+ul li a{
+    text-decoration: none;
+}
+ul li{
+    float: left;
+    padding: 20px;
+}
+ul li:nth-child(2){
+    margin-right: 900px;
+}
+.button{
+    background-color: blue;
+    color: white;
+    float: right;
+}
