@@ -3,10 +3,7 @@ package com.lovisgod.safehaven.ViewModels
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.lovisgod.safehaven.Models.Alert
-import com.lovisgod.safehaven.Models.Login
-import com.lovisgod.safehaven.Models.OtherAlerts
-import com.lovisgod.safehaven.Models.SignUp
+import com.lovisgod.safehaven.Models.*
 import com.lovisgod.safehaven.Repository.AppRepo
 import com.pixplicity.easyprefs.library.Prefs
 import kotlinx.coroutines.Dispatchers
@@ -54,7 +51,7 @@ class AppViewModel: ViewModel() {
             } catch (e: Exception){
                 if (e.message!!.contains("Unable to resolve host")) {
                     Log.i("errorrr", "error -> ${e}")
-//                    EventBus.getDefault().post(NetworkErrorEvent("A network error occured please check your network and try again later"))
+                    EventBus.getDefault().post(NetworkErrorEvent("A network error occured please check your network and try again later"))
                 }
             }
         }
@@ -64,11 +61,12 @@ class AppViewModel: ViewModel() {
             try {
                 val token = Prefs.getString("token", "")
                 val sosResponse = AppRepo.sendPolice(details, token)
+                Log.i("resposne", "this is response -> ${sosResponse.data}")
                 emit(sosResponse)
             } catch (e: Exception){
                 if (e.message!!.contains("Unable to resolve host")) {
                     Log.i("errorrr", "error -> ${e}")
-//                    EventBus.getDefault().post(NetworkErrorEvent("A network error occured please check your network and try again later"))
+                    EventBus.getDefault().post(NetworkErrorEvent("A network error occured please check your network and try again later"))
                 }
             }
         }
@@ -81,7 +79,7 @@ class AppViewModel: ViewModel() {
             } catch (e: Exception){
                 if (e.message!!.contains("Unable to resolve host")) {
                     Log.i("errorrr", "error -> ${e}")
-//                    EventBus.getDefault().post(NetworkErrorEvent("A network error occured please check your network and try again later"))
+                    EventBus.getDefault().post(NetworkErrorEvent("A network error occured please check your network and try again later"))
                 }
             }
         }
@@ -94,7 +92,7 @@ class AppViewModel: ViewModel() {
             } catch (e: Exception){
                 if (e.message!!.contains("Unable to resolve host")) {
                     Log.i("errorrr", "error -> ${e}")
-//                    EventBus.getDefault().post(NetworkErrorEvent("A network error occured please check your network and try again later"))
+                    EventBus.getDefault().post(NetworkErrorEvent("A network error occured please check your network and try again later"))
                 }
             }
         }

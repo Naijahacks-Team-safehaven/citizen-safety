@@ -9,9 +9,13 @@ import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.lovisgod.safehaven.Models.Alert
+import com.lovisgod.safehaven.Models.NetworkErrorEvent
 import com.lovisgod.safehaven.Utils.DailogMessages
 import com.lovisgod.safehaven.ViewModels.AppViewModel
 import com.pixplicity.easyprefs.library.Prefs
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : AppCompatActivity() {
     var messages = DailogMessages()
@@ -51,5 +55,21 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, EventActivity::class.java)
         Prefs.putString("event", event)
         startActivity(intent)
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onNetworkErrorEvent(event: NetworkErrorEvent) {
+        messages.getMessage(event.message, this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
     }
 }

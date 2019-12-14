@@ -12,12 +12,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.textfield.TextInputEditText
 import com.lovisgod.safehaven.Models.Login
+import com.lovisgod.safehaven.Models.NetworkErrorEvent
 import com.lovisgod.safehaven.Utils.DailogMessages
 import com.lovisgod.safehaven.ViewModels.AppViewModel
 import com.pixplicity.easyprefs.library.Prefs
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class LoginActivity : AppCompatActivity() {
     var messages = DailogMessages()
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         val emailText = findViewById<TextInputEditText>(R.id.reg_em)
         val passwordText = findViewById<TextInputEditText>(R.id.reg_pass)
         val submit = findViewById<Button>(R.id.login_button)
-        val progressBar: ProgressBar = findViewById(R.id.login_progress_bar)
+        progressBar = findViewById(R.id.login_progress_bar)
         val signup = findViewById<TextView>(R.id.signup_text_link)
         var model = ViewModelProviders.of(this)[AppViewModel::class.java]
 
@@ -59,5 +64,22 @@ class LoginActivity : AppCompatActivity() {
 
             })
         }
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onNetworkErrorEvent(event: NetworkErrorEvent) {
+        messages.getMessage(event.message, this)
+        progressBar.visibility = View.GONE
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
     }
 }

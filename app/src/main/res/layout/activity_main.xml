@@ -123,12 +123,17 @@
 
     <TextView
         android:id="@+id/sos_click"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="SOS"
-        android:layout_marginBottom="50dp">
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:background="@drawable/sos_bg"
+        android:layout_marginBottom="40dp">
     </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>
