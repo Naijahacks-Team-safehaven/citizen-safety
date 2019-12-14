@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fourty_dp_dp">40dp</dimen>
+    <dimen name="fab_margin">15dp</dimen>
+    <dimen name="fifty_dp">50dp</dimen>
+    <dimen name="fifteen_sp_sp">15sp</dimen>
+</resources>
