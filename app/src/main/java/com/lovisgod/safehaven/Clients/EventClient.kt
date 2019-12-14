@@ -1,9 +1,6 @@
 package com.lovisgod.safehaven.Clients
 
-import com.lovisgod.safehaven.Models.Alert
-import com.lovisgod.safehaven.Models.Login
-import com.lovisgod.safehaven.Models.OtherAlerts
-import com.lovisgod.safehaven.Models.SignUp
+import com.lovisgod.safehaven.Models.*
 import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,10 +10,10 @@ import retrofit2.http.POST
 
 interface EventClient {
     @POST("web/signup")
-    suspend fun signup(@Body signUpDetails:SignUp): ResponseBody
+    suspend fun signup(@Body signUpDetails:SignUp): LoginResponse
 
     @POST("web/login")
-    suspend fun login(@Body loginDetails: Login) : ResponseBody
+    suspend fun login(@Body loginDetails: Login) : LoginResponse
 
     @POST("web/send-sos")
     suspend fun sensSos(@Body details: Alert, @Header("Authorization") token: String) : ResponseBody

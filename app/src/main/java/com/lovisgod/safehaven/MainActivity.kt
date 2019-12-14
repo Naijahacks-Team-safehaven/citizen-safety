@@ -3,7 +3,9 @@ package com.lovisgod.safehaven
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.cardview.widget.CardView
+import com.pixplicity.easyprefs.library.Prefs
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     fun openEventActivity(event: String) {
         val intent = Intent(this, EventActivity::class.java)
-        intent.putExtra("whoto", event)
+        Prefs.putString("event", event)
         startActivity(intent)
     }
 }

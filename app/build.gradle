@@ -14,6 +14,7 @@ android {
         applicationId "com.lovisgod.safehaven"
         minSdkVersion 15
         targetSdkVersion 29
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -84,6 +85,16 @@ dependencies {
 
     // EventBus Lib
     implementation 'org.greenrobot:eventbus:3.0.0'
+
+    // spot dailog
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+
+    // easy prefs
+    implementation 'com.pixplicity.easyprefs:library:1.9.0'
+
+    // jwt
+
+    implementation 'com.auth0.android:jwtdecode:1.4.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.1'

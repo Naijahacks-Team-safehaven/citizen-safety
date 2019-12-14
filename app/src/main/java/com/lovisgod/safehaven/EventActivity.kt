@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
+import com.pixplicity.easyprefs.library.Prefs
 
 class EventActivity : AppCompatActivity() {
 
@@ -17,10 +18,9 @@ class EventActivity : AppCompatActivity() {
         var event_box: TextView = findViewById(R.id.event_box)
         var locationEnabler: Switch = findViewById(R.id.location_swith)
         var send_button: Button = findViewById(R.id.send_button)
+        var event = Prefs.getString("event", "")
+        Log.i("whoto", "personel is -> $event")
 
-        var personel = Intent().getStringExtra("whoto")
-        Log.i("whoto", "personel is -> $personel")
-
-        contact_personnel.text = "Contact $personel"
+        contact_personnel.text = "Contact $event"
     }
 }
