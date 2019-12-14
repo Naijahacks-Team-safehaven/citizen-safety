@@ -1,0 +1,49 @@
+{
+  "name": "ussd-app",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node build/index.js",
+    "build": "babel src --out-dir build",
+    "migrate": "./node_modules/.bin/sequelize db:migrate",
+    "undo": "./node_modules/.bin/sequelize db:migrate:undo:all",
+    "seed": "./node_modules/.bin/sequelize db:seed:all",
+    "init:db": "./node_modules/.bin/sequelize init",
+    "dev": "nodemon --exec babel-node src/index.js"
+  },
+  "author": "Moshood Abidemi",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "nexmo": "^2.6.0-beta-1",
+    "bcryptjs": "^2.4.3",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "datauri": "^2.0.0",
+    "dotenv": "^8.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "loadb": "^1.0.3",
+    "multer": "^1.4.1",
+    "pg": "^7.12.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "sequelize": "^5.19.3",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/register": "^7.6.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.3"
+  }
+}
