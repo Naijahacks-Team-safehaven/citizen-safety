@@ -1,101 +1,68 @@
-# NaijaHacks Hackathon 2019
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Team Safehaven
+## Available Scripts
 
-# Description
-The SafeHaven app is a cross platform application(USSD, Web and Mobile) that enable citizens of the society especially potential victims, victims or third party persons to report cases of crime, rape or any form of abuse to authorized personnels and seek help in the quickest way possible.
+In the project directory, you can run:
 
-### Team Members
+### `npm start`
 
-- Joseph Burutu - UI/UX Designer and Frontend Developer 
-- Ayooluwa Olosunde - Backend and Mobile Developer 
-- Valentine - Frontend Developer 
-- Moshood Abidemi - Frontend and Backend Developer
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-# Problem
+### `npm test`
 
-As people, we want a free, safe and welcoming environment to live, work, learn and thrive. Technology has the potential in our nation, Nigeria, to help improve the security and provide a safe society. To that end, we agree that now is the time to use technology for good, to be tech proud, and to use technology to keep us safe.
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-# Proposed Solution
+### `npm run build`
 
-There's a rapid increase in rape cases, crime and abuse of human rights in the country right now, with no quick way to contact the needed authorities to help in such cases.
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-SafeHaven provides a platform-based application(USSD, web, and mobile) that enables citizens of the society to report crime, rapes or abuses to approved personnel and seek support as quick as possible.
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-# Proposed Stack
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Node, HTML, CSS, vanila js and Postgres
+### `npm run eject`
 
-# Benefit
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-- To provide a platform where security issues can be reported to approved personnels and authority.
-- Users will be able to add their families and friends cotacts for security alert during distress.
-- The platform will give security insights of locations to users.
-- A well detailed data analysis of security events over time in an environment. This will be useful for security agencies and users at large.
-- USSD application will make it easy for users without data connection to use the app. 
-- Videos footage and images can be sent via the webapp, thus provide ample evidence should there be a law case. 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-# Top-level directory layout
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-    .
-    ├── server                    # Server code and data models
-    database                      # for migration and seed files
-    controllers
-    route
-    app.js
-    utils
-    ├── Client                  # Front End code and  files
-     src                     # Source files (alternatively 
-    └── README.md   
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-# How to setup project and run locally
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Clone the repository 
+### Code Splitting
 
-```
-https://github.com/Naijahacks-Team-safehaven/citizen-safety
-```
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Install all dependencies
+### Analyzing the Bundle Size
 
-Using yarn
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-```
-yarn install
-```
+### Making a Progressive Web App
 
-Using npm
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-```
-npm install
-```
+### Advanced Configuration
 
-### Start watching the file and changes
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-Using yarn
+### Deployment
 
-```
-yarn run watch
-```
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-Using npm
+### `npm run build` fails to minify
 
-```
-npm run watch
-```
-
-```
-yarn run serve
-
-```
-
-Using npm
-
-```
-npm run serve
-
-
-```         
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
