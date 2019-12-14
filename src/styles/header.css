@@ -3,19 +3,23 @@
     padding: 0;
 }
 div.header {
-    background-color:rgb(201, 37, 37);
+    background-color:rgb(255, 255, 255);
     color: blue;
-    margin: 10px;
+    margin-bottom: 50px;
+    display: flex;
 }
-
+ul li a{
+    text-decoration: none;
+}
 ul li{
-    display: inline;
     float: left;
     padding: 20px;
+}
+ul li:nth-child(2){
+    margin-right: 900px;
 }
 .button{
     background-color: blue;
     color: white;
-    display: inline;
     float: right;
 }

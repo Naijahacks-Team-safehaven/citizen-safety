@@ -1,13 +1,22 @@
 import React from 'react';
 import { TextField, Button } from '@material-ui/core'
+import Header from './Header';
+import '../styles/login.css';
 function Login(){
     return(
         <div>
-            <form>
-                <TextField variant="outlined" label="Username"/>
-                <TextField variant="outlined" label="Username"/>
-                <Button color="primary"/>
-            </form>
+            <Header />
+            <div className="form-field">
+                <form>
+                    <TextField variant="outlined" label="Username"/>
+                    <br />
+                    <br />
+                    <TextField variant="outlined" label="Password"/>
+                    <br />
+                    <br />
+                    <Button color="primary" variant="contained">Login</Button>
+                </form>
+            </div>
         </div>
     )
 }

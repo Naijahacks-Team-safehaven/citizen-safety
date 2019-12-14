@@ -1,21 +1,19 @@
 import React from 'react';
 import './App.css';
-import Header from '../src/components/Header';
 import Button from '@material-ui/core/Button';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Login from '../src/components/Login';
+import Homepage from '../src/components/Homepage'
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
-        <div className="intro">
-          <h3>Welcome to SafeHaven</h3>
-          <p>Saving lives and properties is our mission</p>
-          
-            <Button variant="contained" color="primary"><Link to="/Login">Get started</Link></Button>
+        <div className="intro">      
             <Switch>
+              <Route exact path="/">
+                <Homepage />
+              </Route>
               <Route path="/Login">
                   <Login />
               </Route>
