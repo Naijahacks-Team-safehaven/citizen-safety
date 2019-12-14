@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        if (Prefs.getString("token", "").isNullOrEmpty()){
+        if (Prefs.getString("token", "").isNotEmpty()){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()

@@ -7,9 +7,15 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.lovisgod.safehaven.Models.OtherAlerts
+import com.lovisgod.safehaven.Utils.DailogMessages
+import com.lovisgod.safehaven.ViewModels.AppViewModel
 import com.pixplicity.easyprefs.library.Prefs
 
 class EventActivity : AppCompatActivity() {
+    var messages = DailogMessages()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +26,56 @@ class EventActivity : AppCompatActivity() {
         var send_button: Button = findViewById(R.id.send_button)
         var event = Prefs.getString("event", "")
         Log.i("whoto", "personel is -> $event")
+        var model = ViewModelProviders.of(this)[AppViewModel::class.java]
+
+        send_button.setOnClickListener {
+            val eventMessage = event_box.text.toString()
+            eventSender(eventMessage, event, model)
+        }
 
         contact_personnel.text = "Contact $event"
+
+    }
+
+    fun eventSender(message: String, event: String, model: AppViewModel) {
+        val intent = Intent(this, MainActivity::class.java)
+        val dailog = messages.loading("Alert is being sent", this)
+        dailog!!.show()
+        val details = OtherAlerts("", message, "New tech park Zone", "")
+        when(event) {
+            "police" -> model.policeAlert(details).observe(this, Observer {
+                if (it.status == "Success"){
+                    dailog.dismiss()
+                    messages.getMessage(it.data, this)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    dailog.dismiss()
+                    messages.getMessage(it.data, this)
+                }
+            })
+            "hospital" -> model.hospitalAlert(details).observe(this, Observer {
+                if (it.status == "Success"){
+                    dailog.dismiss()
+                    messages.getMessage(it.data, this)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    dailog.dismiss()
+                    messages.getMessage(it.data,this)
+                }
+            })
+            "lawyer" -> model.lawyerAlert(details).observe(this, Observer {
+                if (it.status == "Success"){
+                    dailog.dismiss()
+                    messages.getMessage(it.data, this)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    dailog.dismiss()
+                    messages.getMessage(it.data, this)
+                }
+            })
+        }
     }
 }

@@ -20,7 +20,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/abc_vector_test"
+            app:srcCompat="@drawable/police"
             android:contentDescription="police" />
 
     </androidx.cardview.widget.CardView>
@@ -48,7 +48,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/abc_vector_test"
+            android:src="@drawable/ic_local_hospital_black_24dp"
             android:contentDescription="hospital"/>
 
     </androidx.cardview.widget.CardView>
@@ -78,7 +78,7 @@
             android:layout_height="100dp"
             android:layout_margin="@dimen/fab_margin"
             android:textSize="@dimen/fifteen_sp_sp"
-            app:srcCompat="@drawable/abc_vector_test"
+            app:srcCompat="@drawable/lawyer"
             android:contentDescription="lawyer"/>
 
     </androidx.cardview.widget.CardView>
@@ -106,7 +106,7 @@
             android:layout_margin="@dimen/fab_margin"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:srcCompat="@drawable/abc_vector_test"
+            android:src="@drawable/ic_history_black_24dp"
             android:contentDescription="history"/>
 
     </androidx.cardview.widget.CardView>

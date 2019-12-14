@@ -16,16 +16,16 @@ interface EventClient {
     suspend fun login(@Body loginDetails: Login) : LoginResponse
 
     @POST("web/send-sos")
-    suspend fun sensSos(@Body details: Alert, @Header("Authorization") token: String) : ResponseBody
+    suspend fun sensSos(@Body details: Alert, @Header("Authorization") token: String) : LoginResponse
 
     @POST("web/report-police")
-    suspend fun SendPoliceAlert(@Body details: OtherAlerts, @Header("Authorization") token: String): ResponseBody
+    suspend fun SendPoliceAlert(@Body details: OtherAlerts, @Header("Authorization") token: String): LoginResponse
 
     @POST("web/report-hospital")
-    suspend fun SendHospitalAlert(@Body details: OtherAlerts, @Header("Authorization") token: String) : ResponseBody
+    suspend fun SendHospitalAlert(@Body details: OtherAlerts, @Header("Authorization") token: String) : LoginResponse
 
     @POST("web/report-lawyer")
-    suspend fun SendLawyerAlert(@Body details: OtherAlerts, @Header("Authorization") token: String): ResponseBody
+    suspend fun SendLawyerAlert(@Body details: OtherAlerts, @Header("Authorization") token: String): LoginResponse
 
 
 
