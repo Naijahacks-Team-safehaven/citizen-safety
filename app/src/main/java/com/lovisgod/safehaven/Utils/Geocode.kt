@@ -9,12 +9,12 @@ import java.io.IOException
 import java.util.*
 
 class Geocode {
-    fun getLocation(input:String, context: Context): LatLng? {
+     suspend fun getAddress(latt: Double, long:Double, context: Context): String? {
         var addressList: List<Address>? = null
-        var latlng: LatLng? = null
+        var name: String? = null
         val geocoder = Geocoder(context, Locale.getDefault())
         try {
-            addressList = geocoder.getFromLocationName(input, 10)
+            addressList = geocoder.getFromLocation(latt, long, 10)
 
         } catch (e: IOException) {
             e.printStackTrace()
@@ -26,14 +26,12 @@ class Geocode {
 
         addressList?.let {
             val locationAdress = addressList[0]
-            val lat = locationAdress.latitude
-            val lng = locationAdress.longitude
-            latlng = LatLng(lat, lng)
+            name = locationAdress.getAddressLine(0)
         }
 
-        Log.i("TAG", "${latlng?.latitude}")
+        Log.i("TAG", "${name}")
 
-        return latlng
+        return name
 
     }
 }

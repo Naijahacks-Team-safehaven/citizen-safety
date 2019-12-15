@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignupActivity" />
-        <activity android:name=".EventActivity" />
+        <activity android:name=".EventActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity">
         </activity>
     </application>

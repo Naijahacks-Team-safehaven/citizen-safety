@@ -60,6 +60,7 @@
         app:layout_constraintTop_toTopOf="@id/enable_location"
         app:layout_constraintBottom_toBottomOf="@id/enable_location"
         app:layout_constraintEnd_toEndOf="parent"
+        android:checked="true"
         android:layout_marginRight="@dimen/fab_margin">
     </Switch>
 

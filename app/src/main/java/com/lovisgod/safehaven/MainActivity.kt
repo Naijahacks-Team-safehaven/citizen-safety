@@ -1,11 +1,15 @@
 package com.lovisgod.safehaven
 
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.lovisgod.safehaven.Models.Alert
@@ -19,9 +23,15 @@ import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : AppCompatActivity() {
     var messages = DailogMessages()
+
+    companion object {
+
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setUpMap()
         var policeCall: CardView = findViewById(R.id.ploicebuttonCard)
         var hospitalCall: CardView = findViewById(R.id.hospitalbuttonCard)
         var lawyerCall : CardView = findViewById(R.id.lawyerbuttonCard)
@@ -71,5 +81,30 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         EventBus.getDefault().unregister(this)
         super.onStop()
+    }
+
+    private fun setUpMap() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+            return
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.d("TAG", "$requestCode, $resultCode, $data")
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+               Toast.makeText(this, "Location enabled", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }
