@@ -17,10 +17,10 @@
 
         <ImageView
             android:id="@+id/policebutton"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/police"
+            android:src="@drawable/ic_police_icon"
             android:contentDescription="police" />
 
     </androidx.cardview.widget.CardView>
@@ -45,10 +45,10 @@
 
         <ImageView
             android:id="@+id/hospitalbutton"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
             android:layout_margin="@dimen/fab_margin"
-            android:src="@drawable/ic_local_hospital_black_24dp"
+            android:src="@drawable/ic_hospital_hospital"
             android:contentDescription="hospital"/>
 
     </androidx.cardview.widget.CardView>
@@ -74,11 +74,11 @@
 
         <ImageView
             android:id="@+id/lawyerbutton"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
             android:layout_margin="@dimen/fab_margin"
             android:textSize="@dimen/fifteen_sp_sp"
-            app:srcCompat="@drawable/lawyer"
+            android:src="@drawable/ic_lawyer_icon"
             android:contentDescription="lawyer"/>
 
     </androidx.cardview.widget.CardView>
@@ -104,9 +104,9 @@
         <ImageView
             android:id="@+id/historybutton"
             android:layout_margin="@dimen/fab_margin"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_history_black_24dp"
+            android:src="@drawable/ic_history_icon"
             android:contentDescription="history"/>
 
     </androidx.cardview.widget.CardView>
