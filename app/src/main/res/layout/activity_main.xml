@@ -6,134 +6,165 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/ploicebuttonCard"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_picture"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content">
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hospital_card"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="70dp"
-        android:layout_marginLeft="@dimen/fourty_dp_dp">
+        android:layout_marginLeft="@dimen/fifty_dp">
 
-        <ImageView
-            android:id="@+id/policebutton"
-            android:layout_width="80dp"
-            android:layout_height="100dp"
-            android:layout_margin="@dimen/fab_margin"
-            android:src="@drawable/ic_police_icon"
-            android:contentDescription="police" />
+        <TextView
+            android:id="@+id/hospital_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_hospital_hospital"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Hospital">
+        </TextView>
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/police_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Police"
-        app:layout_constraintTop_toBottomOf="@+id/ploicebuttonCard"
-        app:layout_constraintStart_toStartOf="@+id/ploicebuttonCard"
-        app:layout_constraintEnd_toEndOf="@+id/ploicebuttonCard">
-    </TextView>
+
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/hospitalbuttonCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/fire_station_card"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ploicebuttonCard"
-        android:layout_marginRight="@dimen/fourty_dp_dp">
+        app:layout_constraintTop_toTopOf="@id/hospital_card"
+        android:layout_marginRight="@dimen/fifty_dp">
 
-        <ImageView
-            android:id="@+id/hospitalbutton"
-            android:layout_width="80dp"
-            android:layout_height="100dp"
-            android:layout_margin="@dimen/fab_margin"
-            android:src="@drawable/ic_hospital_hospital"
-            android:contentDescription="hospital"/>
+        <TextView
+            android:id="@+id/fire_statio_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_police_icon"
+            android:text="Fire Station"
+            android:textSize="20sp"
+            android:textStyle="bold">
+        </TextView>
 
     </androidx.cardview.widget.CardView>
 
-
-    <TextView
-        android:id="@+id/hospital_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Hospital"
-        app:layout_constraintTop_toBottomOf="@+id/hospitalbuttonCard"
-        app:layout_constraintStart_toStartOf="@+id/hospitalbuttonCard"
-        app:layout_constraintEnd_toEndOf="@+id/hospitalbuttonCard">
-    </TextView>
     <androidx.cardview.widget.CardView
-        android:id="@+id/lawyerbuttonCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="@id/ploicebuttonCard"
-        app:layout_constraintLeft_toRightOf="@id/ploicebuttonCard"
-        app:layout_constraintTop_toBottomOf="@id/police_label"
+        android:id="@+id/directory_card"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:layout_constraintLeft_toLeftOf="@id/hospital_card"
+        app:layout_constraintLeft_toRightOf="@id/hospital_card"
+        app:layout_constraintTop_toBottomOf="@id/hospital_card"
         android:layout_marginTop="@dimen/fifty_dp">
 
-        <ImageView
-            android:id="@+id/lawyerbutton"
-            android:layout_width="80dp"
-            android:layout_height="100dp"
-            android:layout_margin="@dimen/fab_margin"
-            android:textSize="@dimen/fifteen_sp_sp"
-            android:src="@drawable/ic_lawyer_icon"
-            android:contentDescription="lawyer"/>
+
+        <TextView
+            android:id="@+id/directory_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Directories"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_police_icon"
+            android:textSize="20sp"
+            android:textStyle="bold"
+           >
+        </TextView>
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/lawyer_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Lawyer"
-        app:layout_constraintTop_toBottomOf="@+id/lawyerbuttonCard"
-        app:layout_constraintStart_toStartOf="@+id/lawyerbuttonCard"
-        app:layout_constraintEnd_toEndOf="@+id/lawyerbuttonCard">
-    </TextView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/historybuttonCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/safety_tips_card"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_marginTop="@dimen/fifty_dp"
-        app:layout_constraintLeft_toLeftOf="@id/hospitalbuttonCard"
-        app:layout_constraintTop_toBottomOf="@id/hospital_label">
+        app:layout_constraintLeft_toLeftOf="@id/fire_station_card"
+        app:layout_constraintTop_toBottomOf="@id/hospital_card">
 
-        <ImageView
-            android:id="@+id/historybutton"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_width="80dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_history_icon"
-            android:contentDescription="history"/>
+        <TextView
+            android:id="@+id/safety_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Safety Tips"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_police_icon"
+            android:textSize="20sp"
+            android:textStyle="bold">
+        </TextView>
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/history_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Report History"
-        app:layout_constraintTop_toBottomOf="@+id/historybuttonCard"
-        app:layout_constraintStart_toStartOf="@+id/historybuttonCard"
-        app:layout_constraintEnd_toEndOf="@+id/historybuttonCard">
-    </TextView>
+<androidx.cardview.widget.CardView
+    android:id="@+id/bottom_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <TextView
+            android:id="@+id/contact_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Us"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_police_icon"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:textSize="20sp"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:id="@+id/safe_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Safe Friends"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_police_icon"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:textSize="20sp"
+            android:textStyle="bold">
+        </TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/sos_click"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="100dp"
+        android:elevation="@dimen/fab_margin"
         android:text="SOS"
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="#ffffff"
-        android:background="@drawable/sos_bg"
-        android:layout_marginBottom="40dp">
+        android:background="@drawable/sos_bg">
     </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>

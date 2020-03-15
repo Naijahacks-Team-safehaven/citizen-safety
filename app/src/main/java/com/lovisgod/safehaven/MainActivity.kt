@@ -32,10 +32,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUpMap()
-        var policeCall: CardView = findViewById(R.id.ploicebuttonCard)
-        var hospitalCall: CardView = findViewById(R.id.hospitalbuttonCard)
-        var lawyerCall : CardView = findViewById(R.id.lawyerbuttonCard)
-        var historyView: CardView = findViewById(R.id.historybuttonCard)
+        var policeCall: CardView = findViewById(R.id.hospital_card)
+        var hospitalCall: CardView = findViewById(R.id.fire_station_card)
+        var lawyerCall : CardView = findViewById(R.id.directory_card)
+        var historyView: CardView = findViewById(R.id.safety_tips_card)
         var sosClick: TextView = findViewById(R.id.sos_click)
         var model = ViewModelProviders.of(this)[AppViewModel::class.java]
 
