@@ -25,7 +25,7 @@
     "cors": "^2.8.5",
     "datauri": "^2.0.0",
     "dotenv": "^8.1.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "loadb": "^1.0.3",
     "multer": "^1.4.1",
     "pg": "^7.12.1",
